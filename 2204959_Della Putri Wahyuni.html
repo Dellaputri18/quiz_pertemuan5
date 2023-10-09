@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Della Putri Wahyuni (2204959)</title>
+    <style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    input[type=textbox], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+    }
+
+    label {
+        padding: 12px 12px 12px 0;
+        display: inline-block;
+    }
+
+    input[type=submit] {
+        background-color: #aa7804;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+    }
+
+    input[type=submit]:hover {
+        background-color: #aa7804;
+    }
+
+    .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+
+    .col-25 {
+        float: left;
+        width: 25%;
+        margin-top: 6px;
+    }
+
+    .col-75 {
+        float: left;
+        width: 75%;
+        margin-top: 6px;
+    }
+
+    /* Clear floats after the columns */
+    .row::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+    }
+    </style>
+    <script>
+    function tampilHasil(){
+        
+    nama = document.getElementById("nama").value
+    alamat = document.getElementById("alamatPemesan").value
+    n = document.getElementById("jenisKopi").value
+    totHar = 0
+
+    if (n == 1){
+        kopi = "Kopi Arabika"
+        totHar = 10000
+    }else if(n == 2){
+        kopi = "Kopi Robusta"
+        totHar = 15000
+    }else if(n == 3){
+        kopi = "Kopi Liberia"
+        totHar = 20000
+    }else if(n == 4){
+        kopi = "Kopi Ekselsa"
+        totHar = 25000
+    }
+
+    checkBox1 = document.getElementById(5);
+    checkBox2 = document.getElementById(6);
+
+    if (checkBox1.checked){
+        totHar = totHar + 2500
+        document.getElementById("hasilUkuran").innerHTML = "Ukuran : Sedang";
+    }else if (checkBox2.checked){
+        totHar = totHar + 5000
+        document.getElementById("hasilUkuran").innerHTML = "Ukuran : Besar";
+    }else{
+        document.getElementById("hasilUkuran").innerHTML = "";
+    }
+
+    document.getElementById("hasilNama").innerHTML = "Nama : " + nama;
+    document.getElementById("pesanan").innerHTML = "Pesanan Jenis Kopi : " + kopi;
+    document.getElementById("totHarga").innerHTML = "Harga : " + totHar;
+    document.getElementById("alamat").innerHTML = "Alamat : " + alamat;
+    }
+
+    </script> 
+</head>
+<body>
+
+<h2>Form Pemesanan Coffee</h2>
+
+<div class="container">
+  <form>
+  <div class="row">
+    <div class="col-25">
+      <label for="nama">Nama Lengkap Pemesan</label>
+    </div>
+    <div class="col-75">
+      <input type="textbox" id="nama" name="nama" placeholder="Masukan Nama Anda ...">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="jenisKopi">Pilih Jenis Kopi</label>
+    </div>
+    <div class="col-75">
+      <select id="jenisKopi" name="jenisKopi">
+        <option value=1>Kopi Arabika</option>
+        <option value=2>Kopi Robusta</option>
+        <option value=3>Kopi Liberika</option>
+        <option value=4>Kopi Ekselsa</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="alamatPemesan">Alamat Pemesan</label>
+    </div>
+    <div class="col-75">
+        <input type="textbox" id="alamatPemesan" name="alamatPemesan" placeholder="Alamat Pemesan.." style="height:200px"></input>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="ukuran">Ukuran</label>
+    </div>
+    <div class="col-25">
+      <input type="radio" id=5 name="ukuran" value="Sedang">
+  <label for="sedang">Sedang</label><br>
+    </div>
+    <div class="col-25">
+      <input type="radio" id=6 name="ukuran" value="Besar">
+  <label for="besar">Besar</label><br>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <input type="button" onClick="tampilHasil()" value="Simpan">
+  </div>
+  </form>
+</div>
+
+<div class="row">
+    <div class="col-100">
+        <p id="hasilNama"></p>
+        <p id="alamat"></p>
+        <p id="pesanan"></p>
+        <p id="hasilUkuran"></p>
+        <p id="totHarga"></p>
+    </div>
+  </div>
+
+</body>
+</html>
